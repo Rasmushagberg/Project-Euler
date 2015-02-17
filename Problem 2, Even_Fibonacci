@@ -1,0 +1,29 @@
+package problem2;
+
+public class Even_Fibonacci {
+	public static void main(String[] args) {
+		long start = System.nanoTime();
+		int i = 0;
+		int j = 1;
+		int sum = 0;
+		boolean flip = true;
+		while (i <= 4000000) {
+			if (flip) {
+				i = i + j;
+				if (i % 2 == 0) {
+					sum += i;
+				}
+				flip = false;
+				} else {
+				j = i + j;
+				if (j % 2 == 0) {
+					sum += j;
+				}
+				flip = true;
+				}
+		}
+		long end = System.nanoTime();
+		System.out.println(sum);
+		System.out.println((end-start)/1000000 + " millisekunder.");
+	}
+}
