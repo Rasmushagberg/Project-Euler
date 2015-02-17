@@ -1,0 +1,34 @@
+package problem7;
+
+import java.util.ArrayList;
+
+public class Prime10001 {
+
+	public static void main(String[] args) {
+		long start = System.nanoTime();
+		ArrayList<Long> primes = new ArrayList<Long>();
+		primes.add((long) 2);
+		int count = 0;
+		long i = 1;
+		int j = 0;
+		boolean prime = true;
+		while (count < 10001) {
+			i ++;
+			prime = true;
+			while (j < primes.size() && primes.get(j) <= Math.sqrt(i)) {
+				if (i % primes.get(j) == 0) {
+					prime = false;
+				}
+				j++;
+			}
+			j = 0;
+			if (prime) {
+				primes.add(i);
+				count ++;
+			}
+		}
+		long end = System.nanoTime();
+		System.out.println(i);
+		System.out.println((end-start)/1000000 + " millisekunder.");
+	}
+}
